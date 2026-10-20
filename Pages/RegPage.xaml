@@ -1,0 +1,49 @@
+﻿<Page x:Class="AMTech.Pages.RegPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AMTech.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Регистрация">
+
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="320">
+        
+        <Label Content="ФИО"/>
+        <Grid>
+            <TextBox x:Name="txtbxFIO" MaxLength="150" ToolTip="Фамилия, имя и отчество: только буквы, пробел и дефис"
+                     TextChanged="txtbxFIO_TextChanged" PreviewTextInput="txtbxFIO_PreviewTextInput"/>
+            <Label x:Name="lblFioHitn" Content="Иванов Иван Иванович" Foreground="{DynamicResource HintBrush}"
+                   MouseLeftButtonUp="lblFioHitn_MouseLeftButtonUp"/>
+        </Grid>
+
+        <Label Content="Логин"/>
+        <Grid>
+            <TextBox x:Name="txtbxLog" MaxLength="50" ToolTip="Логин: английские буквы и цифры, без пробелов"
+                     TextChanged="txtbxLog_TextChanged" PreviewTextInput="txtbxLog_PreviewTextInput"/>
+            <Label x:Name="lblLogHitn" Content="Введите логин" Foreground="{DynamicResource HintBrush}"
+                   MouseLeftButtonUp="lblLogHitn_MouseLeftButtonUp"/>
+        </Grid>
+
+        <Label Content="Пароль"/>
+        <Grid>
+            <PasswordBox x:Name="passBxFrst" MaxLength="50" ToolTip="От 6 символов: английские буквы и хотя бы одна цифра"
+                         PasswordChanged="passBxFrst_PasswordChanged"/>
+            <Label x:Name="lblPassHitn" Content="Введите пароль" Foreground="{DynamicResource HintBrush}"
+                   MouseLeftButtonUp="lblPassHitn_MouseLeftButtonUp"/>
+        </Grid>
+
+        <Label Content="Подтверждение пароля"/>
+        <Grid>
+            <PasswordBox x:Name="passBxScnd" MaxLength="50" ToolTip="Повторите пароль"
+                         PasswordChanged="passBxScnd_PasswordChanged"/>
+            <Label x:Name="lblPassSecHitn" Content="Повторите пароль" Foreground="{DynamicResource HintBrush}"
+                   MouseLeftButtonUp="lblPassSecHitn_MouseLeftButtonUp"/>
+        </Grid>
+
+        <Button x:Name="regButton" Content="Зарегистрироваться" ToolTip="Создать учётную запись" Margin="0,15,0,0"
+                Click="regButton_Click"/>
+    </StackPanel>
+    
+</Page>

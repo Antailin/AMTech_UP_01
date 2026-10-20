@@ -1,0 +1,17 @@
+﻿<Page x:Class="AMTech.Pages.ManagerPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AMTech.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Менеджер">
+
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Label x:Name="HelloLabel" HorizontalAlignment="Center" FontSize="18" Margin="0,0,0,10"/>
+        <Button x:Name="BtnComponents" Content="Комплектующие" ToolTip="Товары, цены и остатки" Click="BtnComponents_Click"/>
+        <Button x:Name="BtnCategories" Content="Категории" ToolTip="Категории товаров" Click="BtnCategories_Click"/>
+        <Button x:Name="BtnSuppliers" Content="Поставщики" ToolTip="Поставщики товаров" Click="BtnSuppliers_Click"/>
+    </StackPanel>
+</Page>

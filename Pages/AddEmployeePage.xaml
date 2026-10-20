@@ -1,0 +1,58 @@
+﻿<Page x:Class="AMTech.Pages.AddEmployeePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AMTech.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Сотрудник">
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="400">
+        <Label Content="ФИО"/>
+        <Grid>
+            <TextBox x:Name="TBFullName" Text="{Binding FullName}" MaxLength="150" ToolTip="Только буквы, пробел и дефис"
+                     PreviewTextInput="Letters_PreviewTextInput" TextChanged="TBFullName_TextChanged"/>
+            <Label x:Name="FullNameHint" Content="Иванов Иван Иванович" Foreground="{DynamicResource HintBrush}"
+                   MouseLeftButtonUp="FullNameHint_MouseLeftButtonUp"/>
+        </Grid>
+
+        <Label Content="Логин"/>
+        <Grid>
+            <TextBox x:Name="TBLogin" Text="{Binding Login}" MaxLength="50" ToolTip="Английские буквы и цифры, без пробелов"
+                     PreviewTextInput="Login_PreviewTextInput" TextChanged="TBLogin_TextChanged"/>
+            <Label x:Name="LoginHint" Content="Введите логин" Foreground="{DynamicResource HintBrush}"
+                   MouseLeftButtonUp="LoginHint_MouseLeftButtonUp"/>
+        </Grid>
+
+        <Label x:Name="PasswordLabel" Content="Пароль"/>
+        <Grid>
+            <PasswordBox x:Name="PBPassword" MaxLength="50" ToolTip="От 6 символов: английские буквы и хотя бы одна цифра"
+                         PasswordChanged="PBPassword_PasswordChanged"/>
+            <Label x:Name="PasswordHint" Content="Введите пароль" Foreground="{DynamicResource HintBrush}"
+                   MouseLeftButtonUp="PasswordHint_MouseLeftButtonUp"/>
+        </Grid>
+
+        <Label Content="Должность"/>
+        <Grid>
+            <ComboBox x:Name="CBPosition" SelectedValuePath="Tag" SelectedValue="{Binding Position}" ToolTip="Выберите должность"
+                      SelectionChanged="CBPosition_SelectionChanged">
+                <ComboBoxItem Content="Сборщик" Tag="Assembler"/>
+                <ComboBoxItem Content="Менеджер" Tag="Manager"/>
+                <ComboBoxItem Content="Директор" Tag="Director"/>
+            </ComboBox>
+            <Label x:Name="PositionHint" Content="Выберите должность" Foreground="{DynamicResource HintBrush}"
+                   MouseLeftButtonUp="PositionHint_MouseLeftButtonUp"/>
+        </Grid>
+
+        <Label Content="Ставка, руб."/>
+        <Grid>
+            <TextBox x:Name="TBRate" MaxLength="7" ToolTip="Целое число от 0 до 1 000 000"
+                     PreviewTextInput="OnlyDigits_PreviewTextInput" TextChanged="TBRate_TextChanged"/>
+            <Label x:Name="RateHint" Content="Например, 60000" Foreground="{DynamicResource HintBrush}"
+                   MouseLeftButtonUp="RateHint_MouseLeftButtonUp"/>
+        </Grid>
+
+        <Button x:Name="ButtonSave" Content="Сохранить" ToolTip="Сохранить сотрудника" Margin="0,15,0,0"
+                Click="ButtonSave_Click"/>
+    </StackPanel>
+</Page>

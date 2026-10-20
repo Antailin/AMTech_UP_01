@@ -1,0 +1,23 @@
+﻿<Page x:Class="AMTech.Pages.ChangePassPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AMTech.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Смена пароля">
+
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="300">
+        <Label Content="Логин"/>
+        <TextBox x:Name="TbLogin" MaxLength="50" ToolTip="Ваш логин"/>
+        <Label Content="Текущий пароль"/>
+        <PasswordBox x:Name="CurrentPasswordBox" MaxLength="50" ToolTip="Пароль, с которым вы входите сейчас"/>
+        <Label Content="Новый пароль"/>
+        <PasswordBox x:Name="NewPasswordBox" MaxLength="50" ToolTip="От 6 символов: английские буквы и хотя бы одна цифра"/>
+        <Label Content="Подтверждение нового пароля"/>
+        <PasswordBox x:Name="ConfirmPasswordBox" MaxLength="50" ToolTip="Повторите новый пароль"/>
+        <Button x:Name="ButtonSave" Content="Сохранить" ToolTip="Сохранить новый пароль" Margin="0,15,0,0"
+                Click="ButtonSave_Click"/>
+    </StackPanel>
+</Page>

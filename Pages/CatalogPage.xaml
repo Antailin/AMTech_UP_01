@@ -1,0 +1,71 @@
+﻿<Page x:Class="AMTech.Pages.CatalogPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AMTech.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Каталог комплектующих">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <WrapPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Label Content="Поиск:"/>
+            <Grid Width="200" Margin="5">
+                <TextBox x:Name="SearchBox" ToolTip="Поиск по названию и производителю"
+                         TextChanged="SearchBox_TextChanged"/>
+                <Label x:Name="SearchHint" Content="Название товара" Foreground="{DynamicResource HintBrush}"
+                       MouseLeftButtonUp="SearchHint_MouseLeftButtonUp"/>
+            </Grid>
+            <Label Content="Категория:"/>
+            <ComboBox x:Name="CategoryBox" Width="190" Margin="5" ToolTip="Показать товары одной категории"
+                      SelectionChanged="CategoryBox_SelectionChanged"/>
+            <Label Content="Цена:"/>
+            <ComboBox x:Name="SortBox" Width="160" Margin="5" SelectedIndex="0" ToolTip="Сортировка по цене"
+                      SelectionChanged="SortBox_SelectionChanged">
+                <ComboBoxItem Content="По возрастанию"/>
+                <ComboBoxItem Content="По убыванию"/>
+            </ComboBox>
+            <CheckBox x:Name="InStockBox" Content="Только в наличии" Margin="5" ToolTip="Скрыть товары, которых нет на складе"
+                      Checked="InStockBox_Changed" Unchecked="InStockBox_Changed"/>
+            <Button x:Name="ClearButton" Content="Очистить фильтр" ToolTip="Сбросить поиск и фильтры"
+                    Click="ClearButton_Click"/>
+        </WrapPanel>
+
+        <ListView x:Name="ListComponents" Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center"/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Width="230" Margin="5">
+                        <TextBlock Text="{Binding Name}" FontWeight="Bold" TextWrapping="Wrap" Height="40"/>
+                        <TextBlock Text="{Binding Categories.Name}"/>
+                        <TextBlock Text="{Binding Manufacturer}"/>
+                        <TextBlock Text="{Binding WarrantyMonths, StringFormat='Гарантия: {0} мес.'}"/>
+                        <TextBlock Text="{Binding SalePrice, StringFormat='Цена: {0:0} руб.'}" FontSize="18" FontWeight="Bold"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Label Content="Оплата:"/>
+            <ComboBox x:Name="PayBox" Width="160" Margin="5" SelectedIndex="0" ToolTip="Способ оплаты">
+                <ComboBoxItem Content="Карта"/>
+                <ComboBoxItem Content="СБП"/>
+                <ComboBoxItem Content="Наличные"/>
+            </ComboBox>
+            <Button x:Name="BuyButton" Content="Купить" ToolTip="Купить выбранный товар" Click="BuyButton_Click"/>
+            <Button x:Name="MyOrdersButton" Content="Мои заказы" ToolTip="Покупки и гарантия" Click="MyOrdersButton_Click"/>
+        </StackPanel>
+    </Grid>
+</Page>
